@@ -3,7 +3,7 @@ const usersRepo = require('../../repositories/users.js');
 const router = express.Router();
 const signUpTemplate = require('../../views/admin/auth/signup.js');
 const signInTemplate = require('../../views/admin/auth/signin.js');
-const { requireEmail, requirePassword, requirePasswordConfirmation } = require('./validators.js');
+const { requireEmail, requirePassword, requirePasswordConfirmation, requireEmailExists, requireValidPasswordForUser } = require('./validators.js');
 const { check, validationResult } = require('express-validator');
 
 
@@ -31,40 +31,19 @@ router.get('/signin', (req, res) => {
     res.send(signInTemplate({ req }));
 });
 
-router.post('/signin', [
-        check('email')
-        .trim()
-        .normalizeEmail()
-        .isEmail()
-        .withMessage('Must provide a valid email')
-        .custom(async(email) => {
-            const user = await usersRepo.getOneBy({ email })
-            if (!user) {
-                throw new Error('Email not found')
-            }
-        }),
-        check('password')
-        .trim()
-        .custom(async(password) => {
+router.post('/signin', [requireEmailExists, requireValidPasswordForUser], async(req, res) => {
+    const errors = validationResult(req);
+    console.log(errors);
+    if (!errors.isEmpty()) {
+        //  return res.send(signUpTemplate({ req, errors }));
+        return res.send('Problems occured');
+    }
 
-        })
-    ],
-    async(req, res) => {
-        const errors = validationResult(req);
-        console.log(errors);
-        // if (!errors.isEmpty()) {
-        //     return res.send(signUpTemplate({ req, errors }));
-        // }
-        // const { email, password } = req.body;
-        // const user = await usersRepo.getOneBy({ email });
+    const { email } = req.body;
+    const user = await usersRepo.getOneBy({ email });
 
-        // const validPassword = await usersRepo.comparePasswords(user.password, password);
-        // if (!validPassword) {
-        //     return res.send('Invalid username or password.');
-        // }
-
-        req.session.userId = user.id;
-        res.send('You are signed in.');
-    });
+    req.session.userId = user.id;
+    res.send('You are signed in.');
+});
 
 module.exports = router;
