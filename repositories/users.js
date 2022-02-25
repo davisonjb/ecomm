@@ -56,7 +56,7 @@ class UsersRepository {
         if (!record) {
             throw new Error(`Record with id ${id} not found.`);
         }
-        console.log(records.indexOf(record));
+        // console.log(records.indexOf(record));
         Object.assign(record, attrs);
         await this.writeAll(records);
     }

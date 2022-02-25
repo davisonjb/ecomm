@@ -13,5 +13,11 @@
     "email": "brittney@email.com",
     "password": "bpassword",
     "id": "6610add3"
+  },
+  {
+    "email": "skyler@email.com",
+    "password": "aaaa",
+    "passwordconfirmation": "aaaa",
+    "id": "ad69aad7"
   }
 ]

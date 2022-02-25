@@ -1,11 +1,21 @@
 const express = require('express');
 // const bodyParser = require('body-parser');
+const usersRepo = require('./repositories/users.js')
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
     res.send(`
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account</title>
+    </head>
+    <body>
        <div>
         <form method="POST">
             <input name="email" placeholder="email" />
@@ -13,7 +23,9 @@ app.get('/', (req, res) => {
             <input name="passwordconfirmation" placeholder="password confirmation" />
             <button>Sign Up</button>
         </form>
-       </div>     
+       </div>    
+       </body>
+       </html> 
     `);
 });
 
@@ -36,8 +48,18 @@ app.get('/', (req, res) => {
 // };
 
 
-app.post('/', (req, res) => {
-    console.log(req.body);
+app.post('/', async(req, res) => {
+    const { email, password, passwordconfirmation } = req.body;
+    const existingUser = await usersRepo.getOneBy({ email });
+    if (existingUser) {
+        throw new Error('Email already exist.');
+    }
+
+    if (password !== passwordconfirmation) {
+        throw new Error('Passwords must match.')
+    }
+    usersRepo.create(req.body);
+    res.send('Account created.');
 });
 
 
