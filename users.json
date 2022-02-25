@@ -1,17 +1,21 @@
-[
-  {
-    "email": "jim@email.com",
-    "password": "8690ac26e094c1ad8f1323bd01e4318cd077d44408b50872cf99e00fef02f3f2b04de41764dbae2b5191f3431d4b305c82427c277ac141689f7e49d160c475c5.8c7fc712e6aedb44",
-    "id": "cc9e82a8"
-  },
-  {
-    "email": "britt@email.com",
-    "password": "bb7b2aed973edf955dabc9da4693fcbbc6a6d680b5d1bc39db8d06cffb4d197744b318076830160e20b3eb0690a61722a7e3d631282ee35da7312a8c864c79e8.bb4f36f31ab07783",
-    "id": "52e744ac"
-  },
-  {
-    "email": "dusty@email.com",
-    "password": "d913fad6028c72af3de7609cc324254fb32dbdf0471cf00acb7e4e742e0a591e3f242510af6bf58ea82c3ad61dab638ea421f9ed561cdae629a904c3e950e31e.6e87d07cd7f42888",
-    "id": "8e3928e3"
-  }
+[{
+        "email": "jim@email.com",
+        "password": "8690ac26e094c1ad8f1323bd01e4318cd077d44408b50872cf99e00fef02f3f2b04de41764dbae2b5191f3431d4b305c82427c277ac141689f7e49d160c475c5.8c7fc712e6aedb44",
+        "id": "cc9e82a8"
+    },
+    {
+        "email": "britt@email.com",
+        "password": "bb7b2aed973edf955dabc9da4693fcbbc6a6d680b5d1bc39db8d06cffb4d197744b318076830160e20b3eb0690a61722a7e3d631282ee35da7312a8c864c79e8.bb4f36f31ab07783",
+        "id": "52e744ac"
+    },
+    {
+        "email": "dusty@email.com",
+        "password": "d913fad6028c72af3de7609cc324254fb32dbdf0471cf00acb7e4e742e0a591e3f242510af6bf58ea82c3ad61dab638ea421f9ed561cdae629a904c3e950e31e.6e87d07cd7f42888",
+        "id": "8e3928e3"
+    },
+    {
+        "email": "skyler@email.com",
+        "password": "1a1895c54262052b436650083bd274ddab18783b5ede079b8c4599014608303ae7142e62e93fa6675cf32fc5834498c46b629579a4150a480c2ffa074a243363.9e4a4a71ca2ac55c",
+        "id": "932702b7"
+    }
 ]
