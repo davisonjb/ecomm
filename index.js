@@ -3,7 +3,9 @@ const express = require('express');
 const cookieSession = require('cookie-session');
 // const { response } = require('express');
 const authRouter = require('./routes/admin/auth');
-const productsRouter = require('./routes/admin/products');
+const adminProductsRouter = require('./routes/admin/products');
+const productsRouter = require('./routes/products');
+const cartsRouter = require('./routes/carts.js');
 
 const app = express();
 app.use(express.static('public'));
@@ -13,6 +15,8 @@ app.use(cookieSession({
 }));
 app.use(authRouter);
 app.use(productsRouter);
+app.use(adminProductsRouter);
+app.use(cartsRouter);
 
 
 
